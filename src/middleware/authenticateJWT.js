@@ -9,13 +9,13 @@ module.exports = function authenticateJWT(req, res, next) {
 
   const token = authHeader.split(' ')[1];
 
-jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-  if (err) {
-    console.log('JWT error:', err);
-    return res.status(403).json({ error: 'Invalid or expired token' });
-  }
-  console.log('Decoded user:', user);
-  req.user = user;
-  next();
-});
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      console.log('JWT error:', err);
+      return res.status(403).json({ error: 'Invalid authenticateJWT or expired token' });
+    }
+    console.log('Decoded user:', user);
+    req.user = user;
+    next();
+  });
 };

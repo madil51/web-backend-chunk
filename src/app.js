@@ -11,7 +11,7 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const jobRoutes = require('./routes/jobs');
-//const driverRoutes = require('./routes/drivers');
+const driverRoutes = require('./routes/drivers');
 const paymentRoutes = require('./routes/payments');
 //const chatRoutes = require('./routes/chat');
 const adminRoutes = require('./routes/admin');
@@ -82,7 +82,7 @@ const authLimiter = rateLimit({
 app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/users', authMiddleware, userRoutes);
 app.use('/api/jobs', authMiddleware, jobRoutes);
-//app.use('/api/drivers', authMiddleware, driverRoutes);
+app.use('/api/drivers', authMiddleware, driverRoutes);
 app.use('/api/payments', authMiddleware, paymentRoutes);
 //app.use('/api/chat', authMiddleware, chatRoutes);
 app.use('/api/admin', authMiddleware, adminRoutes);
